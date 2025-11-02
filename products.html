@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .summary-box {
+            background-color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-500 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Products & Services Breakdown</h1>
+            <p class="mt-2 text-lg text-gray-600">A side-by-side comparison of what each company offers.</p>
+        </header>
+
+        <!-- Product Breakdown Section -->
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Netflix Products -->
+            <div class="bg-gray-100 p-6 rounded-2xl shadow-inner flex flex-col items-center text-center">
+                <img src="https://placehold.co/150x150/000000/ffffff?text=Netflix" alt="Netflix logo" class="w-24 h-24 rounded-full mb-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Netflix, Inc.</h2>
+                <ul class="text-left text-gray-700 list-disc list-inside space-y-2 mt-4 w-full">
+                    <li><strong>Streaming Subscriptions:</strong> Offers various tiers (Basic, Standard, Premium) with different features like quality and number of concurrent streams.</li>
+                    <li><strong>Original Content Production:</strong> Creates and licenses its own movies, TV shows, documentaries, and specials.</li>
+                    <li><strong>Ad-Supported Tier:</strong> Provides a lower-cost option with advertisements.</li>
+                    <li><strong>Gaming:</strong> Expanded into mobile gaming, offering a selection of games to subscribers at no extra cost.</li>
+                </ul>
+            </div>
+
+            <!-- Nvidia Products -->
+            <div class="bg-gray-100 p-6 rounded-2xl shadow-inner flex flex-col items-center text-center">
+                <img src="https://placehold.co/150x150/000000/ffffff?text=Nvidia" alt="Nvidia logo" class="w-24 h-24 rounded-full mb-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">NVIDIA Corporation</h2>
+                <ul class="text-left text-gray-700 list-disc list-inside space-y-2 mt-4 w-full">
+                    <li><strong>Gaming GPUs:</strong> Designs GeForce graphics processing units for PC gaming.</li>
+                    <li><strong>Data Center:</strong> Provides GPUs and software for AI, machine learning, and high-performance computing.</li>
+                    <li><strong>Professional Visualization:</strong> Creates Quadro and RTX graphics cards for professional workstations (e.g., film and design).</li>
+                    <li><strong>Automotive:</strong> Develops chips and software for self-driving cars and AI-powered cockpits.</li>
+                </ul>
+            </div>
+        </main>
+        
+        <!-- Static Product Summary Button and Box -->
+        <div class="mt-12 text-center">
+            <button id="productSummaryBtn" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                Product Summary
+            </button>
+        </div>
+        <div id="productSummaryBox" class="hidden mt-8 bg-gray-100 p-6 rounded-2xl shadow-inner">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 text-center">Summary & Analysis</h3>
+            <div id="productSummaryText" class="text-gray-700 leading-relaxed"></div>
+        </div>
+    </div>
+    
+    <div id="messageBox" class="message-box">
+        <p id="messageText" class="text-gray-800 mb-4"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full">OK</button>
+    </div>
+
+    <script>
+        // Simple modal/message box to replace alert()
+        window.alert = function(message) {
+            document.getElementById('messageText').innerText = message;
+            document.getElementById('messageBox').style.display = 'flex';
+        };
+
+        // Static Product Summary Button Functionality
+        const productSummaryText = `Netflix's core business centers on digital media streaming and original content production, targeting general consumers with subscription-based entertainment and diversifying through an ad-supported tier and mobile games to expand its content and revenue models. Conversely, Nvidia's core business is in visual computing, providing hardware and software primarily for gaming and AI, and it strategically diversifies by applying its GPU technology across high-growth, business-to-business markets such as data center AI solutions, professional visualization, and specialized automotive chips, broadening its reach significantly beyond its foundational consumer gaming market.`;
+
+        document.getElementById('productSummaryBtn').addEventListener('click', function() {
+            const box = document.getElementById('productSummaryBox');
+            document.getElementById('productSummaryText').textContent = productSummaryText;
+            box.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

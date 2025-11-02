@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .swot-item {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .swot-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-500 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">SWOT Analysis</h1>
+            <p class="mt-2 text-lg text-gray-600">A strategic overview of strengths, weaknesses, opportunities, and threats.</p>
+        </header>
+
+        <!-- SWOT Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Netflix SWOT -->
+            <div class="p-6 rounded-2xl shadow-inner bg-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Netflix SWOT</h2>
+                <div id="netflix-swot" class="swot-grid">
+                    <!-- Strengths -->
+                    <div class="swot-item bg-green-100 border-l-4 border-green-500" data-type="Strengths">
+                        <h3 class="font-bold text-lg mb-1">Strengths</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Market leadership and strong brand recognition</li>
+                            <li>Massive content library, including original productions</li>
+                        </ul>
+                    </div>
+                    <!-- Weaknesses -->
+                    <div class="swot-item bg-red-100 border-l-4 border-red-500" data-type="Weaknesses">
+                        <h3 class="font-bold text-lg mb-1">Weaknesses</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>High content production costs</li>
+                            <li>Dependence on ad-supported models for new revenue</li>
+                        </ul>
+                    </div>
+                    <!-- Opportunities -->
+                    <div class="swot-item bg-blue-100 border-l-4 border-blue-500" data-type="Opportunities">
+                        <h3 class="font-bold text-lg mb-1">Opportunities</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Expansion into gaming and interactive content</li>
+                            <li>Growing demand in emerging international markets</li>
+                        </ul>
+                    </div>
+                    <!-- Threats -->
+                    <div class="swot-item bg-yellow-100 border-l-4 border-yellow-500" data-type="Threats">
+                        <h3 class="font-bold text-lg mb-1">Threats</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Intense competition from rival streamers (Disney+, Max)</li>
+                            <li>Piracy and account sharing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nvidia SWOT -->
+            <div class="p-6 rounded-2xl shadow-inner bg-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Nvidia SWOT</h2>
+                <div id="nvidia-swot" class="swot-grid">
+                    <!-- Strengths -->
+                    <div class="swot-item bg-green-100 border-l-4 border-green-500" data-type="Strengths">
+                        <h3 class="font-bold text-lg mb-1">Strengths</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Dominant market share in the AI chip sector</li>
+                            <li>Strong ecosystem with CUDA software platform</li>
+                        </ul>
+                    </div>
+                    <!-- Weaknesses -->
+                    <div class="swot-item bg-red-100 border-l-4 border-red-500" data-type="Weaknesses">
+                        <h3 class="font-bold text-lg mb-1">Weaknesses</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Dependence on a few large customers</li>
+                            <li>High prices for consumer GPUs</li>
+                        </ul>
+                    </div>
+                    <!-- Opportunities -->
+                    <div class="swot-item bg-blue-100 border-l-4 border-blue-500" data-type="Opportunities">
+                        <h3 class="font-bold text-lg mb-1">Opportunities</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Growth in automotive and robotics markets</li>
+                            <li>Cloud computing and enterprise AI solutions</li>
+                        </ul>
+                    </div>
+                    <!-- Threats -->
+                    <div class="swot-item bg-yellow-100 border-l-4 border-yellow-500" data-type="Threats">
+                        <h3 class="font-bold text-lg mb-1">Threats</h3>
+                        <ul class="list-disc list-inside text-sm text-gray-700">
+                            <li>Rapid innovation from competitors (AMD, Intel)</li>
+                            <li>Supply chain disruptions and geopolitical risks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static SWOT Summary Button and Box -->
+        <div class="mt-12 text-center">
+            <button id="swotSummaryBtn" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                SWOT Summary
+            </button>
+        </div>
+        <div id="swotSummaryBox" class="hidden mt-8 bg-gray-100 p-6 rounded-2xl shadow-inner">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 text-center">Summary & Analysis</h3>
+            <div id="swotSummaryText" class="text-gray-700 leading-relaxed"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Data for SWOT analysis
+        const swotData = {
+            "Netflix": {
+                "Strengths": "Market leadership, strong brand recognition, and a massive library of original content.",
+                "Weaknesses": "High content production costs and a growing dependence on ad-supported models.",
+                "Opportunities": "Expansion into gaming, live events, and growth in international markets.",
+                "Threats": "Intense competition from rival streamers like Disney+ and HBO Max, and piracy."
+            },
+            "Nvidia": {
+                "Strengths": "Dominant market share in the AI chip sector and the strong ecosystem of its CUDA software platform.",
+                "Weaknesses": "Dependence on a few large customers and high prices for consumer GPUs.",
+                "Opportunities": "Growth in automotive, robotics, and cloud computing markets.",
+                "Threats": "Rapid innovation from competitors like AMD and Intel, and geopolitical risks."
+            }
+        };
+
+        // Click listeners for the SWOT items to show a more detailed description.
+        document.querySelectorAll('.swot-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const companyName = item.closest('.p-6').querySelector('h2').innerText.split(' ')[0];
+                const type = item.dataset.type;
+                const description = swotData[companyName][type];
+                alert(`${companyName} ${type}: ${description}`);
+            });
+        });
+
+        // Static SWOT Summary Button Functionality
+        const swotSummaryText = `Netflix's strategic position is anchored by its strong brand recognition, market leadership in content streaming, and extensive library of original content, yet it contends with high content production costs and an increasing reliance on ad-supported models amidst intense competition from rival streamers and piracy threats. Its future growth drivers involve expansion into gaming, live events, and international markets. In contrast, Nvidia's strategic strength lies in its dominant market share in the AI chip sector and robust CUDA software ecosystem, though it faces vulnerabilities from dependence on a few large customers and high prices for consumer GPUs. Nvidia's growth opportunities are centered on emerging sectors like automotive, robotics, and cloud computing, while it navigates threats from rapid innovation by competitors and geopolitical risks. The key difference highlights Netflix's consumer-facing, content-driven battle for subscriber retention and engagement versus Nvidia's foundational technology dominance in high-growth, enterprise-focused hardware and software.`;
+
+        document.getElementById('swotSummaryBtn').addEventListener('click', function() {
+            const box = document.getElementById('swotSummaryBox');
+            document.getElementById('swotSummaryText').textContent = swotSummaryText;
+            box.classList.remove('hidden');
+        });
+
+        // Simple modal/message box to replace alert()
+        window.alert = function(message) {
+            document.getElementById('messageText').innerText = message;
+            document.getElementById('messageBox').style.display = 'flex';
+        };
+    </script>
+    <div id="messageBox" class="message-box">
+        <p id="messageText" class="text-gray-800 mb-4"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full">OK</button>
+    </div>
+</body>
+</html>

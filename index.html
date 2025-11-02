@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Comparison Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .btn-link {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-500 w-full">
+
+        <!-- Header Section -->
+        <header class="text-center mb-10"><h1 class="text-3xl md:text-
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Company Comparison Dashboard</h1>
+            <p class="mt-2 text-lg text-gray-600">Explore and compare key metrics for Netflix and Nvidia.</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Financials Button -->
+            <a href="financials.html" class="btn-link bg-indigo-500 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 20V4H2v16h20zM6 18V6M10 18v-6M14 18v-8M18 18V9" />
+                </svg>
+                <span class="text-xl font-semibold">Financial Performance</span>
+                <p class="text-sm mt-1 opacity-80">Revenue, profit, and stock trends.</p>
+            </a>
+
+            <!-- History Button -->
+            <a href="timeline.html" class="btn-link bg-green-500 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.35 2 12.28 2 8.5A5.5 5.5 0 017.5 3c2.53 0 4.5 2.15 4.5 5.5s1.97 5.5 4.5 5.5A5.5 5.5 0 0122 8.5c0 3.78-3.4 6.85-8.55 11.53L12 21.35z" />
+                </svg>
+                <span class="text-xl font-semibold">Company History & Milestones</span>
+                <p class="text-sm mt-1 opacity-80">Key dates and historical events.</p>
+            </a>
+            
+            <!-- SWOT Button -->
+            <a href="swot.html" class="btn-link bg-red-500 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                <span class="text-xl font-semibold">SWOT Analysis</span>
+                <p class="text-sm mt-1 opacity-80">Strengths, Weaknesses, Opportunities, Threats.</p>
+            </a>
+
+            <!-- Products Button -->
+            <a href="products.html" class="btn-link bg-yellow-500 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 2a2 2 0 00-2 2v16a2 2 0 002 2h4a2 2 0 002-2V4a2 2 0 00-2-2h-4zM8 8h8M8 12h8M8 16h8" />
+                </svg>
+                <span class="text-xl font-semibold">Products & Services</span>
+                <p class="text-sm mt-1 opacity-80">A breakdown of their core offerings.</p>
+            </a>
+
+            <!-- Leadership & Vision Button -->
+<a href="leadership.html" class="bg-blue-600 hover:bg-blue-700 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg transition duration-150 ease-in-out">
+    <!-- Icon representing Leadership (Team/Person) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </svg>
+    <span class="text-xl font-semibold">Leadership & Vision</span>
+    <p class="text-sm mt-1 opacity-80">Executives, strategy, and culture.</p>
+</a>
+
+            <!-- Final Recommendation Button -->
+            <a href="summary.html" class="btn-link bg-purple-500 text-white p-8 rounded-2xl flex flex-col items-center text-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l-7-7 7-7m7 14l-7-7 7-7" />
+                </svg>
+                <span class="text-xl font-semibold">Final Recommendation</span>
+                <p class="text-sm mt-1 opacity-80">A comprehensive AI-driven analysis.</p>
+            </a>
+
+            
+
+        </main>
+
+
+    </div>
+    
+    <div id="messageBox" class="message-box">
+        <p id="messageText" class="text-gray-800 mb-4"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full">OK</button>
+    </div>
+
+    <script>
+        window.alert = function(message) {
+            document.getElementById('messageText').innerText = message;
+            document.getElementById('messageBox').style.display = 'flex';
+        };
+    </script>
+</body>
+</html>

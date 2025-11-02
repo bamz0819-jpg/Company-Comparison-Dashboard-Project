@@ -1,0 +1,97 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-8 bg-gray-100">
+    <h1 class="text-3xl font-bold mb-4">Financial Performance</h1>
+    <canvas id="revenueChart" width="400" height="200"></canvas>
+    <canvas id="profitChart" width="400" height="200" class="mt-8"></canvas>
+    <a href="index.html" class="text-indigo-600 underline mt-8 block">Back to Dashboard</a>
+    <script>
+        // Financial data for Netflix and Nvidia
+        const companyA = {
+            name: 'Netflix',
+            revenue: [25.0, 29.7, 31.6, 33.7, 36.5],
+            profitMargin: [9.3, 10.7, 9.1, 11.0, 12.5],
+        };
+        const companyB = {
+            name: 'Nvidia',
+            revenue: [10.9, 16.6, 26.9, 27.0, 60.9],
+            profitMargin: [26.6, 33.7, 44.4, 28.1, 51.5],
+        };
+        const years = ['2020', '2021', '2022', '2023', '2024'];
+
+        // Revenue Chart
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: companyA.name + ' Revenue ($B)',
+                        data: companyA.revenue,
+                        borderColor: 'rgb(99, 102, 241)',
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: companyB.name + ' Revenue ($B)',
+                        data: companyB.revenue,
+                        borderColor: 'rgb(16, 185, 129)',
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Revenue Comparison (2020-2024)' }
+                }
+            }
+        });
+
+        // Profit Margin Chart
+        new Chart(document.getElementById('profitChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: companyA.name + ' Profit Margin (%)',
+                        data: companyA.profitMargin,
+                        borderColor: 'rgb(99, 102, 241)',
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: companyB.name + ' Profit Margin (%)',
+                        data: companyB.profitMargin,
+                        borderColor: 'rgb(16, 185, 129)',
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Profit Margin Comparison (2020-2024)' }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

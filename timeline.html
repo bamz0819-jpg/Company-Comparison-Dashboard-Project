@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company History & Milestones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #e5e7eb;
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child::before {
+            height: 50%;
+        }
+        .timeline-item .dot {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .timeline-content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .timeline-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .timeline-modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-500 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Company History & Milestones</h1>
+            <p class="mt-2 text-lg text-gray-600">Explore the key moments in the history of Netflix and Nvidia.</p>
+        </header>
+
+        <!-- Timelines Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Netflix Timeline -->
+            <div class="bg-gray-100 p-6 rounded-2xl shadow-inner">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Netflix History</h2>
+                <div id="timelineNetflix" class="timeline-container"></div>
+            </div>
+
+            <!-- Nvidia Timeline -->
+            <div class="bg-gray-100 p-6 rounded-2xl shadow-inner">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Nvidia History</h2>
+                <div id="timelineNvidia" class="timeline-container"></div>
+            </div>
+        </div>
+
+        <!-- Summarize Timeline Button and Box -->
+        <button id="summarizeBtn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-8">
+            Summarize Timeline
+        </button>
+        <div id="summaryBox" class="hidden mt-6 p-4 bg-gray-100 rounded-xl shadow-inner"></div>
+    </div>
+
+    <!-- Modal for displaying milestone details -->
+    <div id="timelineModal" class="timeline-modal">
+        <div class="timeline-modal-content">
+            <button onclick="document.getElementById('timelineModal').style.display = 'none';" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
+            <p id="modalDescription" class="text-gray-700"></p>
+        </div>
+    </div>
+   
+    <script>
+        const netflixHistory = [
+            { year: 1997, title: 'Founded', description: 'Netflix is founded by Reed Hastings and Marc Randolph as a company that rents DVDs by mail.' },
+            { year: 1999, title: 'Subscription Model', description: 'Introduces a monthly subscription service, eliminating due dates and late fees.' },
+            { year: 2007, title: 'Streaming Service', description: 'Launches its streaming service, allowing subscribers to watch movies and TV shows online.' },
+            { year: 2013, title: 'Original Content', description: 'Releases its first original series, "House of Cards," marking a major strategic shift.' },
+            { year: 2016, title: 'Global Expansion', description: 'Expands its streaming service to more than 130 new countries, reaching nearly all global markets.' },
+            { year: 2021, title: 'Squid Game', description: 'The South Korean series "Squid Game" becomes Netflix\'s most-watched show ever, highlighting the success of its international content strategy.' },
+        ];
+
+        const nvidiaHistory = [
+            { year: 1993, title: 'Founded', description: 'Nvidia is founded by Jensen Huang, Chris Malachowsky, and Curtis Priem.' },
+            { year: 1999, title: 'IPO & GeForce', description: 'Goes public on the NASDAQ and releases the GeForce 256, the world\'s first GPU.' },
+            { year: 2006, title: 'CUDA', description: 'Launches CUDA, a parallel computing platform that enables GPUs to be used for general-purpose computing, not just graphics.' },
+            { year: 2017, title: 'AI Boom', description: 'Nvidia\'s GPUs become the standard for training AI models, leading to explosive growth as the AI revolution takes off.' },
+            { year: 2020, title: 'Mellanox Acquisition', description: 'Acquires Mellanox for $6.9 billion, expanding its reach into high-performance computing and data center infrastructure.' },
+            { year: 2023, title: 'AI Chips', description: 'Nvidia dominates the AI chip market with its H100 and A100 GPUs, solidifying its position as a key player in the tech industry.' },
+        ];
+
+        function createTimeline(containerId, historyData) {
+            const container = document.getElementById(containerId);
+            historyData.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'timeline-item';
+                itemDiv.innerHTML = `
+                    <div class="dot"></div>
+                    <div class="timeline-content text-center">
+                        <h3 class="font-bold text-gray-900">${item.year} - ${item.title}</h3>
+                    </div>
+                `;
+                itemDiv.addEventListener('click', () => {
+                    document.getElementById('modalTitle').innerText = `${item.year}: ${item.title}`;
+                    document.getElementById('modalDescription').innerText = item.description;
+                    document.getElementById('timelineModal').style.display = 'flex';
+                });
+                container.appendChild(itemDiv);
+            });
+        }
+
+        createTimeline('timelineNetflix', netflixHistory);
+        createTimeline('timelineNvidia', nvidiaHistory);
+
+        // Summarize Timeline Button Functionality
+        const summaryText = `Netflix began its journey in 1997 as a DVD-by-mail rental service, strategically pivoting to a streaming service in 2007, a move that positioned it at the forefront of digital entertainment. It further cemented its status by producing its first original series, "House of Cards," in 2013, establishing itself as a major content creator. More recently, in 2023, the company introduced an ad-supported plan and implemented measures against password sharing to boost revenue and sustain its market position.
+
+Nvidia, founded in 1993, initially focused on accelerated computing and GPUs. A critical turning point came in 2006 with the release of CUDA, a platform that made its GPUs essential for parallel computing and AI research. The introduction of its Pascal GPU architecture in 2016 further propelled the adoption of its hardware in AI applications, ultimately leading to significant AI-driven revenue growth by 2024 that established it as one of the world's most valuable companies.`;
+
+        document.getElementById('summarizeBtn').addEventListener('click', function() {
+            const box = document.getElementById('summaryBox');
+            box.textContent = summaryText;
+            box.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

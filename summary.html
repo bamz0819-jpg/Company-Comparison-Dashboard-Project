@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Recommendation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .summary-box {
+            background-color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-500 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Final Summary & Recommendation</h1>
+            <p class="mt-2 text-lg text-gray-600">A comprehensive analysis and final recommendation based on all the data.</p>
+        </header>
+
+        <!-- Main Summary Section -->
+        <main class="text-center">
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Click the button below to view and listen to the final recommendation for your investment decision. This analysis considers all data points from the Financials, History, SWOT, and Products sections.
+            </p>
+            <button id="summaryBtn" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+                Show Final Recommendation
+            </button>
+            <button id="audioBtn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 ml-2">
+                🔊 Listen to Recommendation
+            </button>
+        </main>
+        
+        <!-- Summary Display Box -->
+        <div id="summaryDisplay" class="summary-box hidden mt-8 bg-gray-100 p-6 rounded-2xl shadow-inner">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 text-center">Final Recommendation</h3>
+            <div id="summaryText" class="text-gray-700 leading-relaxed text-left"></div>
+
+        </div>
+    </div>
+
+    <div id="messageBox" class="message-box">
+        <p id="messageText" class="text-gray-800 mb-4"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full">OK</button>
+    </div>
+
+    <script>
+        // Static Final Recommendation Text
+        const finalRecommendation = `
+<strong>Nvidia Analysis:</strong><br>
+<ul>
+<li><strong>Financials:</strong> Nvidia exhibits explosive revenue growth, particularly in the latest period (from 27 to 60.9), signaling immense demand for its products. Its profit margins are exceptionally high and have recently surged to 51.5%, showcasing strong pricing power and efficiency. The stock price reflects this robust performance with a consistent and steep upward trajectory. A debt-to-equity ratio of 0.4 indicates a strong and less leveraged financial position.</li>
+<li><strong>History & Products:</strong> Nvidia has a history of pioneering GPU technology for gaming and has successfully cemented its dominance in the AI sector with its CUDA ecosystem and H100 GPUs. Its product range spans gaming GPUs, data center GPUs for AI, professional visualization tools, and automotive chips.</li>
+<li><strong>SWOT:</strong> Nvidia's primary strengths are its unparalleled dominance in AI chips and its strong, proprietary CUDA ecosystem, which creates high switching costs for customers. While it faces weaknesses like customer concentration and high prices, its opportunities in automotive and cloud AI are substantial. Threats include new competitors and geopolitical risks impacting supply chains.</li>
+</ul>
+<strong>Comparative Assessment & Recommendation:</strong><br>
+Both companies are leaders in their respective fields, but their growth trajectories and financial health diverge significantly.<br>
+<ul>
+<li><strong>Growth & Profitability:</strong> Nvidia demonstrates far superior recent revenue and profit margin growth. Its profit margins are substantially higher than Netflix's, indicating a stronger competitive moat and pricing power in a high-demand sector.</li>
+<li><strong>Financial Health:</strong> Nvidia's significantly lower debt-to-equity ratio points to a healthier balance sheet and less financial risk compared to Netflix.</li>
+<li><strong>Strategic Position:</strong> While Netflix is a mature market leader, it operates in a highly competitive content landscape with increasing costs. Nvidia, on the other hand, is at the forefront of the rapidly expanding and transformative AI industry, with its CUDA ecosystem providing a powerful barrier to entry for competitors. Its opportunities in emerging fields like automotive AI are massive.</li>
+</ul>
+Given Nvidia's explosive financial performance, superior profitability, robust financial health, and dominant strategic position in the high-growth AI and computing sectors with a strong ecosystem lock-in, it presents a more compelling investment opportunity. Netflix, while stable, faces more significant competitive and cost pressures that could cap its future growth potential compared to Nvidia.<br><br>
+<strong>Final Recommendation:</strong> Invest in Nvidia.
+        `;
+
+        document.getElementById('summaryBtn').addEventListener('click', function() {
+            const box = document.getElementById('summaryDisplay');
+            const text = document.getElementById('summaryText');
+            text.innerHTML = finalRecommendation;
+            box.classList.remove('hidden');
+        });
+
+        // Audio Button Functionality (Text-to-Speech)
+        document.getElementById('audioBtn').addEventListener('click', function() {
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
+
+    // Get plain text (strip HTML tags for speech)
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = finalRecommendation;
+    const plainText = tempDiv.innerText || tempDiv.textContent;
+    const utterance = new SpeechSynthesisUtterance(plainText);
+    window.speechSynthesis.speak(utterance);
+});
+
+        // Simple modal/message box to replace alert()
+        window.alert = function(message) {
+            document.getElementById('messageText').innerText = message;
+            document.getElementById('messageBox').style.display = 'flex';
+        };
+    </script>
+</body>
+</html>
