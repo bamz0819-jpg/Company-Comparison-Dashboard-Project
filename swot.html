@@ -140,18 +140,7 @@
             </div>
         </div>
 
-        <!-- Static SWOT Summary Button and Box -->
-        <div class="mt-12 text-center">
-            <button id="swotSummaryBtn" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
-                SWOT Summary
-            </button>
-        </div>
-        <div id="swotSummaryBox" class="hidden mt-8 bg-gray-100 p-6 rounded-2xl shadow-inner">
-            <h3 class="text-xl font-semibold mb-2 text-gray-800 text-center">Summary & Analysis</h3>
-            <div id="swotSummaryText" class="text-gray-700 leading-relaxed"></div>
-        </div>
-    </div>
-    
+         
     <script>
         // Data for SWOT analysis
         const swotData = {
@@ -179,15 +168,7 @@
             });
         });
 
-        // Static SWOT Summary Button Functionality
-        const swotSummaryText = `Netflix's strategic position is anchored by its strong brand recognition, market leadership in content streaming, and extensive library of original content, yet it contends with high content production costs and an increasing reliance on ad-supported models amidst intense competition from rival streamers and piracy threats. Its future growth drivers involve expansion into gaming, live events, and international markets. In contrast, Nvidia's strategic strength lies in its dominant market share in the AI chip sector and robust CUDA software ecosystem, though it faces vulnerabilities from dependence on a few large customers and high prices for consumer GPUs. Nvidia's growth opportunities are centered on emerging sectors like automotive, robotics, and cloud computing, while it navigates threats from rapid innovation by competitors and geopolitical risks. The key difference highlights Netflix's consumer-facing, content-driven battle for subscriber retention and engagement versus Nvidia's foundational technology dominance in high-growth, enterprise-focused hardware and software.`;
-
-        document.getElementById('swotSummaryBtn').addEventListener('click', function() {
-            const box = document.getElementById('swotSummaryBox');
-            document.getElementById('swotSummaryText').textContent = swotSummaryText;
-            box.classList.remove('hidden');
-        });
-
+        
         // Simple modal/message box to replace alert()
         window.alert = function(message) {
             document.getElementById('messageText').innerText = message;
