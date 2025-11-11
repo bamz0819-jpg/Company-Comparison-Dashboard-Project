@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyst Reports & Consensus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .rating-chip {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: inline-block;
+        }
+        .buy { background-color: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+        .hold { background-color: #fffbeb; color: #92400e; border: 1px solid #f59e0b; }
+        .strong-buy { background-color: #e0f2fe; color: #0284c7; border: 1px solid #38bdf8; }
+        .rating-chart-bar {
+            height: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: width 1s ease-out;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-cyan-500 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Analyst Consensus Reports</h1>
+            <p class="mt-2 text-lg text-gray-600">Aggregated Wall Street opinions and price targets.</p>
+        </header>
+
+        <!-- Company Comparison Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Netflix Card -->
+            <div class="p-6 rounded-2xl shadow-xl bg-gray-50 border-l-4 border-red-500">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 flex items-center">
+                    Netflix <span class="text-xl ml-3 text-red-500">(NFLX)</span>
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Price Target -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Consensus Price Target</h3>
+                        <p class="text-3xl font-extrabold text-red-600">$1,398.59</p>
+                        <p class="text-sm text-gray-500 mt-1">Represents a 20% upside from current price.</p>
+                    </div>
+
+                    <!-- Consensus Rating -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Overall Rating</h3>
+                        <span class="rating-chip hold">HOLD</span>
+                        <div class="mt-3">
+                            <p class="text-sm text-gray-600 mb-1">Key Rationale:</p>
+                            <ul class="list-disc list-inside text-sm ml-4 space-y-1">
+                                <li>Content spending remains high, pressuring margins.</li>
+                                <li>Subscriber growth deceleration expected in mature markets.</li>
+                                <li>Long-term opportunity in ad-tier and gaming is priced in.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rating Breakdown -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Analyst Breakdown</h3>
+                        <div class="text-sm">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-green-600 font-medium">Buy (35%)</span>
+                                <span class="text-yellow-600 font-medium">Hold (50%)</span>
+                                <span class="text-red-600 font-medium">Sell (15%)</span>
+                            </div>
+                            <div class="flex w-full overflow-hidden">
+                                <div class="rating-chart-bar bg-green-500" style="width: 35%;"></div>
+                                <div class="rating-chart-bar bg-yellow-500" style="width: 50%;"></div>
+                                <div class="rating-chart-bar bg-red-500" style="width: 15%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Nvidia Card -->
+            <div class="p-6 rounded-2xl shadow-xl bg-gray-50 border-l-4 border-green-600">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 flex items-center">
+                    Nvidia <span class="text-xl ml-3 text-green-600">(NVDA)</span>
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Price Target -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Consensus Price Target</h3>
+                        <p class="text-3xl font-extrabold text-green-700">$237.21</p>
+                        <p class="text-sm text-gray-500 mt-1">Represents a 20% upside from current price.</p>
+                    </div>
+
+                    <!-- Consensus Rating -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Overall Rating</h3>
+                        <span class="rating-chip strong-buy">STRONG BUY</span>
+                        <div class="mt-3">
+                            <p class="text-sm text-gray-600 mb-1">Key Rationale:</p>
+                            <ul class="list-disc list-inside text-sm ml-4 space-y-1">
+                                <li>Unmatched dominance in Data Center and AI infrastructure.</li>
+                                <li>Strong moat provided by the CUDA software ecosystem.</li>
+                                <li>Significant growth vectors in sovereign AI and enterprise adoption.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rating Breakdown -->
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Analyst Breakdown</h3>
+                        <div class="text-sm">
+                           <div class="text-sm">
+    <div class="bg-white p-4 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold mb-3 text-gray-800">Analyst Breakdown</h3>
+    <div class="text-sm">
+        <div class="rating-labels mb-1">
+            <div style="width:85%; text-align:left;"><span class="text-green-600 font-medium">Buy (85%)</span></div>
+            <div style="width:10%; text-align:center;"><span class="text-yellow-600 font-medium">Hold (10%)</span></div>
+            <div style="width:5%; text-align:right;"><span class="text-red-600 font-medium">Sell (5%)</span></div>
+        </div>
+
+        <div class="rating-bars-row">
+            <div class="rating-chart-bar bg-green-500" style="width:85%;"></div>
+            <div class="rating-chart-bar bg-yellow-500" style="width:10%;"></div>
+            <div class="rating-chart-bar bg-red-500" style="width:5%;"></div>
+        </div>
+    </div>
+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</body>
+</html>
