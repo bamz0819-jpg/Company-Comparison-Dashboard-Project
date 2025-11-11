@@ -123,11 +123,7 @@
             </div>
         </div>
 
-        <!-- Summarize Timeline Button and Box -->
-        <button id="summarizeBtn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-8">
-            Summarize Timeline
-        </button>
-        <div id="summaryBox" class="hidden mt-6 p-4 bg-gray-100 rounded-xl shadow-inner"></div>
+        <!-- (Removed Summarize Timeline button and summary box) -->
     </div>
 
     <!-- Modal for displaying milestone details -->
@@ -184,17 +180,8 @@
 
         createTimeline('timelineNetflix', netflixHistory);
         createTimeline('timelineNvidia', nvidiaHistory);
-
-        // Summarize Timeline Button Functionality
-        const summaryText = `Netflix began its journey in 1997 as a DVD-by-mail rental service, strategically pivoting to a streaming service in 2007, a move that positioned it at the forefront of digital entertainment. It further cemented its status by producing its first original series, "House of Cards," in 2013, establishing itself as a major content creator. More recently, in 2023, the company introduced an ad-supported plan and implemented measures against password sharing to boost revenue and sustain its market position.
-
-Nvidia, founded in 1993, initially focused on accelerated computing and GPUs. A critical turning point came in 2006 with the release of CUDA, a platform that made its GPUs essential for parallel computing and AI research. The introduction of its Pascal GPU architecture in 2016 further propelled the adoption of its hardware in AI applications, ultimately leading to significant AI-driven revenue growth by 2024 that established it as one of the world's most valuable companies.`;
-
-        document.getElementById('summarizeBtn').addEventListener('click', function() {
-            const box = document.getElementById('summaryBox');
-            box.textContent = summaryText;
-            box.classList.remove('hidden');
-        });
     </script>
 </body>
 </html>
+``` 
+
