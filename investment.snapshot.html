@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Snapshot & Key Metrics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #eef2ff; /* Indigo-50 */
+    }
+    .metric-label {
+        font-size: 1.125rem; /* text-lg */
+        font-weight: 600;
+        color: #4b5563; /* gray-600 */
+        margin-bottom: 0.25rem;
+    }
+    .metric-value {
+        font-size: 1.75rem; /* ~text-3xl */
+        font-weight: 800;
+    }
+</style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-12 border-t-8 border-indigo-600 w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mb-8 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Investment Snapshot: NFLX vs. NVDA</h1>
+            <p class="mt-2 text-lg text-gray-600">A high-level comparison of scale, valuation, and growth profile.</p>
+        </header>
+
+        <!-- Comparison Grid -->
+        <div class="grid grid-cols-1 gap-8">
+            
+            <!-- Comparison Table Header -->
+            <div class="grid grid-cols-3 gap-4 font-bold text-xl text-center pb-4 border-b-2 border-indigo-200">
+                <div>Metric</div>
+                <div class="text-red-600">Netflix (NFLX)</div>
+                <div class="text-green-600">Nvidia (NVDA)</div>
+            </div>
+
+            <!-- Metric Row: Market Cap -->
+            <div class="grid grid-cols-3 gap-4 items-center p-4 bg-gray-50 rounded-xl shadow-md">
+                <div class="metric-label">Market Cap</div>
+                <div class="metric-value text-red-600">$474.70 Billion</div>
+                <div class="metric-value text-green-600">$4.46 Trillion</div>
+            </div>
+
+            <!-- Metric Row: P/E Ratio -->
+            <div class="grid grid-cols-3 gap-4 items-center p-4">
+                <div class="metric-label">P/E Ratio (TTM)</div>
+                <div class="metric-value text-red-700">46.8x</div>
+                <div class="metric-value text-green-700">53.5x</div>
+            </div>
+
+            <!-- Metric Row: Revenue Growth -->
+            <div class="grid grid-cols-3 gap-4 items-center p-4 bg-gray-50 rounded-xl shadow-md">
+                <div class="metric-label">Revenue Growth (YoY)</div>
+                <div class="metric-value text-red-600">15.49%</div>
+                <div class="metric-value text-green-600">71.55%</div>
+            </div>
+
+            <!-- Metric Row: Dividend Yield -->
+            <div class="grid grid-cols-3 gap-4 items-center p-4">
+                <div class="metric-label">Dividend Yield</div>
+                <div class="metric-value text-red-700">0.0%</div>
+                <div class="metric-value text-green-700">0.02%</div>
+            </div>
+            
+            <!-- Metric Row: Industry -->
+            <div class="grid grid-cols-3 gap-4 items-center p-4 bg-gray-50 rounded-xl shadow-md">
+                <div class="metric-label">Industry</div>
+                <div class="text-xl font-bold text-gray-800">Streaming Media / Entertainment</div>
+                <div class="text-xl font-bold text-gray-800">Semiconductors / AI Compute</div>
+            </div>
+        </div>
+        
+        <!-- Summary Note -->
+        <div class="mt-10 p-5 bg-indigo-100 rounded-xl border-l-4 border-indigo-500">
+            <p class="text-gray-700 text-sm">
+                <strong>Key Insight:</strong> Nvidia (NVDA) operates at a significantly larger scale and trades at a much higher P/E multiple than Netflix (NFLX), reflecting the explosive growth and high investor expectations surrounding its dominance in the AI infrastructure market. Netflix exhibits steadier, high double-digit growth typical of a mature market leader.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
