@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Drivers & Revenue Horizon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+
+        .comparison-card {
+            padding: 2rem; /* equivalent to p-8 */
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08); /* shadow-2xl-like */
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-clip: padding-box;
+        }
+        .comparison-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+
+        .title-bar {
+            padding-bottom: 1rem; /* pb-4 */
+            margin-bottom: 1rem;   /* mb-4 */
+            border-bottom: 2px solid rgba(99,102,241,0.12); /* subtle border */
+        }
+
+        .text-section {
+            border-left: 4px solid currentColor; /* border-l-4 */
+            padding-left: 1rem; /* pl-4 */
+            padding-top: 0.25rem; /* py-1 approx */
+            padding-bottom: 0.25rem;
+            border-radius: 0.5rem;
+        }
+
+        /* color overrides for the left/right card accents */
+        .netflix .title-bar { border-color: rgba(239,68,68,0.12); }
+        .netflix .text-section { border-color: #ef4444; } /* red-500 */
+        .nvidia .title-bar { border-color: rgba(20,184,166,0.12); }
+        .nvidia .text-section { border-color: #14b8a6; } /* teal-500 */
+
+        /* responsive tweaks */
+        @media (min-width: 1024px) {
+            .comparison-card { padding: 2.5rem; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 flex flex-col items-center min-h-screen">
+    <div class="max-w-7xl mx-auto w-full">
+
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center text-gray-600 hover:text-indigo-700 transition-colors duration-200 mb-8 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+
+        <!-- Header Section -->
+        <header class="text-center mb-10 p-6 bg-white rounded-3xl shadow-lg border-b-4 border-indigo-500">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Growth Drivers: Head-to-Head Analysis
+            </h1>
+            <p class="mt-2 text-lg text-gray-600">
+                Comparing the potential long-term <strong>Maximum Revenue Horizon</strong> and key catalysts for both companies.
+            </p>
+        </header>
+
+        <!-- Side-by-Side Comparison Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- NETFLIX (NFLX) - Left Side -->
+            <div class="comparison-card netflix bg-red-50 border-4 border-red-400">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-red-700 title-bar">
+                        <span class="text-5xl mr-2">🍿</span> Netflix (NFLX)
+                    </h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">Maximum Revenue Horizon</h3>
+                    <div class="text-section bg-red-100 p-3 rounded-lg">
+                        <p class="text-gray-700">
+                            <strong>Focus:</strong> Monetization of the existing global consumer base.
+                            The practical limit is <strong>~1 Billion</strong> global broadband households, with current growth primarily driven by <strong>ARPU (Average Revenue Per User)</strong> increases through price tiers (ads) and stopping password sharing.
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Core Growth Catalysts</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="text-section bg-red-50">
+                            <span class="font-semibold text-red-600">Ads Tier Scaling:</span> Capturing a share of the traditional TV advertising market by rapidly expanding the ad-supported subscription base.
+                        </li>
+                        <li class="text-section bg-red-50">
+                            <span class="font-semibold text-red-600">Global Penetration:</span> Continued penetration and premium pricing in under-monetized regions (e.g., APAC, LATAM).
+                        </li>
+                        <li class="text-section bg-red-50">
+                            <span class="font-semibold text-red-600">Content Quality & Games:</span> Utilizing high-quality, exclusive content and building out a compelling games offering to reduce churn and justify price increases.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- NVIDIA (NVDA) - Right Side -->
+            <div class="comparison-card nvidia bg-teal-50 border-4 border-teal-400">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-teal-700 title-bar">
+                        <span class="text-5xl mr-2">💻</span> Nvidia (NVDA)
+                    </h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mt-6 mb-3">Maximum Revenue Horizon</h3>
+                    <div class="text-section bg-teal-100 p-3 rounded-lg">
+                        <p class="text-gray-700">
+                            <strong>Focus:</strong> Infrastructure buildout for the AI revolution.
+                            The potential limit spans the entire global <strong>Data Center, Enterprise IT, and Industrial Simulation</strong> spend, estimated to be a <strong>$1 Trillion+</strong> opportunity over the next decade.
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Core Growth Catalysts</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="text-section bg-teal-50">
+                            <span class="font-semibold text-teal-600">AI Compute Platform:</span> The ongoing necessity for every major corporation, cloud provider, and nation to invest heavily in accelerated compute for GenAI training and inference.
+                        </li>
+                        <li class="text-section bg-teal-50">
+                            <span class="font-semibold text-teal-600">Software Monetization:</span> Developing and licensing their proprietary software stack (CUDA/AI Enterprise) to capture high-margin recurring revenue.
+                        </li>
+                        <li class="text-section bg-teal-50">
+                            <span class="font-semibold text-teal-600">Omniverse/Industrial AI:</span> Expanding the simulation platform into massive industrial markets for autonomous systems, factory simulation (digital twins), and robotics.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Synthesis Footer -->
+        <div class="mt-10 p-6 bg-white rounded-2xl shadow-xl border-t-4 border-indigo-500 text-center">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Synthesis: Scale vs. Saturation</h3>
+            <p class="text-gray-700 text-lg">
+                Nvidia’s <strong>Maximum Revenue Horizon</strong> is tied to a new, multi-trillion dollar technological infrastructure buildout, offering exponential potential. Netflix's horizon is defined by the finite number of global households, relying on incremental increases in user pricing and deeper market penetration.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
